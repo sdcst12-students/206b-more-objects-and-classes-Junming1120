@@ -6,47 +6,39 @@ class quadratic:
     c = 0
     roots = []
 
-    def discriminant():
-        # requires no positional arguments
-        # will make use of class properties a,b and c 
-        # to determine the discriminant which is calculated as 
-        # b^2 - 4ac
-        # return value should be a float type decimal
-        pass
-        return
-    
-    def hasRealRoots():
-        # requires no positional arguments
-        # will make use of class properties a,b and c 
-        # to determine if the quadratic has real roots
-        # defined when the discriminant is non negative
-        # return value should be True or False
-        pass
-        return
+    def discriminant(a, b, c):
+        discriminant = round(b**2 - 4*a*c, 1)
+        return discriminant
+   
+    def hasRealRoots(a, b, c):
+        if b**2 - 4*a*c >= 0:
+            return True
+        else:
+            return False
 
-    def isFactorable():
-        # requires no positional arguments
-        # will make use of class properties a,b and c 
-        # to determine if the quadratic can be factored
-        # quadratic can be factored if the discriminant is a perfect square
-        # return value is True or False
-        pass
-        return 
-    
-    def calcRoots():
-        # requires no positional arguments
-        # will make use of class properties a,b and c 
-        # to determine the roots of the quadratic if
-        # the quadratic has real roots
-        # should make use of the class methods:
-        # self.hasRealRoots()
-        # self.discriminant
-        # method does not have a return value
-        # but should store the values of the roots in the 
-        # list self.roots
-        # list should be sorted in ascending order
-        # roots should be rounded to 2 decimal places
-        pass
+
+    def isFactorable(a, b, c):
+        if b**2 - 4*a*c >= 0 and (b**2 - 4*a*c >= 0)**0.5 == round((b**2 - 4*a*c >= 0)**0.5):
+            return True
+        else:
+            return False
+
+
+    def calcRoots(self):
+    # Check if the quadratic equation has real roots
+     if self.hasRealRoots():
+        # Calculate the discriminant
+        disc = self.discriminant()
+        
+        # Compute the two roots using the quadratic formula
+        root1 = (-self.b + disc**0.5) / (2 * self.a)
+        root2 = (-self.b - disc**0.5) / (2 * self.a)
+        
+        # Store the roots in ascending order, rounded to 2 decimal places
+        self.roots = sorted([round(root1, 2), round(root2, 2)])
+     else:
+        # If there are no real roots, set self.roots to an empty list
+        self.roots = []
 
     def axisOfSymmetry():
         # requires no positional arguments
